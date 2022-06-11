@@ -3,5 +3,5 @@ package main
 import proc "monitor/process"
 
 func main() {
-	proc.Collect(2)
+	proc.TestDB()
 }

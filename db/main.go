@@ -13,7 +13,10 @@ var Gormdb *gorm.DB
 
 func init() {
 	once.Do(func() {
-		sqldb, err := sql.Open("pgx", fmt.Sprintf("postgres://%s:%s@%s/monitor", CurConfig.pgUser, CurConfig.pgPass, CurConfig.pgHost))
+		pgUser := ""
+		pgPass := ""
+		pgHost := ""
+		sqldb, err := sql.Open("pgx", fmt.Sprintf("postgres://%s:%s@%s/monitor", pgUser, pgPass, pgHost))
 		if err != nil {
 			fmt.Println(err.Error())
 		}

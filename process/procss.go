@@ -25,8 +25,6 @@ func Collect(interval time.Duration) {
 			fmt.Println("Get parent information failed. err is", err.Error())
 		}
 		p.Parent = parent.Pid
-		p.Uids, err = v.Uids()
-		p.Gids, err = v.Gids()
 		p.Tgid, err = v.Tgid()
 		p.NumThreads, err = v.NumThreads()
 		p.CreateTime, err = v.CreateTime()
@@ -36,4 +34,17 @@ func Collect(interval time.Duration) {
 
 		db.Gormdb.Create(p)
 	}
+}
+
+func TestDB() {
+	p := &db.Proc{}
+	p.Pid = 1
+	p.Name = "test"
+	p.Status = "alive"
+	p.CreateTime = time.Now().UnixNano()
+	p.Parent = 0
+	p.Tgid = 30
+	p.NumThreads = 100
+
+	db.Gormdb.Create(p)
 }

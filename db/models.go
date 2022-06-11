@@ -8,8 +8,6 @@ type Proc struct {
 	Name       string
 	Status     string
 	Parent     int32
-	Uids       []int32
-	Gids       []int32
 	Tgid       int32
 	NumThreads int32
 	CreateTime int64
