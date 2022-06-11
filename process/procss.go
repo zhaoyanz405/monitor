@@ -20,6 +20,10 @@ func Collect(interval time.Duration) {
 		p.Status, err = v.Status()
 		p.CreateTime, err = v.CreateTime()
 		parent, err := v.Parent()
+		if err != nil {
+			fmt.Printf("parent is %+v", parent)
+			fmt.Println("Get parent information failed. err is", err.Error())
+		}
 		p.Parent = parent.Pid
 		p.Uids, err = v.Uids()
 		p.Gids, err = v.Gids()

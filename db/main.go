@@ -13,7 +13,7 @@ var Gormdb *gorm.DB
 
 func init() {
 	once.Do(func() {
-		sqldb, err := sql.Open("pgx", "postgres://postgres:8249postgres..@47.93.142.176:5432/monitor")
+		sqldb, err := sql.Open("pgx", "postgres://postgres:8249postgres..@127.0.0.1:5432/monitor")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
