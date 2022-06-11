@@ -21,10 +21,12 @@ func Collect(interval time.Duration) {
 		p.CreateTime, err = v.CreateTime()
 		parent, err := v.Parent()
 		if err != nil {
-			fmt.Printf("parent is %+v", parent)
+			fmt.Printf("parent is %+v, pid is %s", parent, v.Pid)
 			fmt.Println("Get parent information failed. err is", err.Error())
 		}
-		p.Parent = parent.Pid
+		if parent != nil {
+			p.Parent = parent.Pid
+		}
 		p.Tgid, err = v.Tgid()
 		p.NumThreads, err = v.NumThreads()
 		p.CreateTime, err = v.CreateTime()
