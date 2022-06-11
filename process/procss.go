@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Collect(interval time.Duration) {
+func Collect() {
 	processes, err := process.Processes()
 	if err != nil {
 		fmt.Println()
@@ -35,6 +35,13 @@ func Collect(interval time.Duration) {
 		}
 
 		db.Gormdb.Create(p)
+	}
+}
+
+func CollectByInterval(interval time.Duration) {
+	for {
+		go Collect()
+		time.Sleep(interval)
 	}
 }
 

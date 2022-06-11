@@ -1,7 +1,10 @@
 package main
 
-import proc "monitor/process"
+import (
+	proc "monitor/process"
+	"time"
+)
 
 func main() {
-	proc.TestDB()
+	proc.CollectByInterval(15 * time.Second)
 }
